@@ -1,0 +1,14 @@
+{
+  "benchmark": "local in-process classifier inference",
+  "runtime": "Python",
+  "python": "3.13.5",
+  "cases": 8,
+  "holdout_accuracy": 1.0,
+  "requests": 5000,
+  "throughput_rps": 244958.5,
+  "p50_ms": 0.00345,
+  "p95_ms": 0.0039,
+  "p99_ms": 0.00575,
+  "scope": "in-process inference only; excludes HTTP/network/database/cloud latency; tiny synthetic holdout data",
+  "model_kind": "bag-of-words-logistic-v1"
+}

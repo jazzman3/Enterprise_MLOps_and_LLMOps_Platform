@@ -1,0 +1,12 @@
+{
+  "benchmark": "HTTP API + SQLAlchemy database lookup",
+  "requests": 200,
+  "concurrency": 5,
+  "throughput_rps": 393.27,
+  "p50_ms": 12.082,
+  "p95_ms": 20.154,
+  "p99_ms": 21.554,
+  "errors": 0,
+  "python": "3.13.5",
+  "scope": "local host HTTP; synthetic input; includes DB request and HTTP; NOT public cloud, LLM call, or representative enterprise scale"
+}

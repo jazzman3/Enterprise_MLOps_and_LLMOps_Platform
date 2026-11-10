@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: mlops-api
+    static_configs:
+      - targets: [api:9101]
+# Metrics are available only on the private Compose network; do not publish port 9101.

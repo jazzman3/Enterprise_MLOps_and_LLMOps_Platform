@@ -1,0 +1,16 @@
+flowchart TB
+  U[Authorized Users / AI OS Agents] --> TLS[HTTPS reverse proxy + WAF]
+  TLS --> API[FastAPI Inference API]
+  ADM[Private Admin / CI runner] --> CTRL[Release Control API]
+  CTRL --> GATE[Accuracy Quality Gate]
+  GATE --> REG[(Versioned Model Artifacts + SHA256)]
+  GATE --> ALIAS[(Champion / Candidate Aliases)]
+  API --> ALIAS
+  API --> REG
+  API --> PM[Prometheus / Monitoring]
+  API --> DB[(PostgreSQL)]
+  CTRL --> AUDIT[(Immutable-event audit history)]
+  TRAIN[Training + Holdout Evaluation] --> CTRL
+  GITHUB[GitHub Actions Test + Image Build] --> DEPLOY[Deployment Approval + Rollback]
+  DEPLOY --> TLS
+  PROMPT[LLM Prompt/Model Evaluation Extension] -. planned .-> CTRL

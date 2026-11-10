@@ -1,0 +1,18 @@
+digraph A {
+  graph [rankdir=TB bgcolor="#0f172a" pad="0.4" nodesep="0.35" ranksep="0.55"];
+  node [shape=box style="rounded,filled" fillcolor="#1e293b" color="#475569" fontcolor="white" fontname="DejaVu Sans" fontsize=13 margin="0.22,0.16"];
+  edge [color="#38bdf8" penwidth=1.4 arrowsize=.7];
+  User [label="Users + Enterprise AI OS\nAuthorized inference clients"];
+  Gateway [label="HTTPS / Reverse Proxy\nTLS + rate limiting"];
+  API [label="FastAPI Model Inference\nAccess control + telemetry"];
+  Registry [label="Model Registry + Aliases\nSHA-256 artifact verification"];
+  DB [label="PostgreSQL\nVersions / Audits / Prompts"];
+  Worker [label="Trainer + Evaluator\nFrozen holdout quality gate"];
+  Admin [label="Private Release API\nPromote / Roll back"];
+  Prom [label="Prometheus\nLatency, requests, errors"];
+  Github [label="GitHub Actions\nTests + container publishing"];
+  LLM [label="LLMOps\nVersioned prompt + provider adapter"];
+  User -> Gateway -> API;
+  API -> Registry; Registry -> DB; API -> Prom; API -> LLM; LLM -> DB;
+  Worker -> Admin; Admin -> Registry; Github -> Admin [style=dashed];
+}
